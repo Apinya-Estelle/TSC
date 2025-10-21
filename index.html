@@ -52,6 +52,13 @@
         .form-checkbox:checked {
             background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
         }
+        /* Modal styles */
+        .modal-overlay {
+            transition: opacity 0.3s ease;
+        }
+        .modal-container {
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
@@ -218,9 +225,55 @@
         </div>
     </div>
 
+    <!-- Modal for notifications -->
+    <div id="notificationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden modal-overlay">
+        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-sm w-full text-center modal-container transform scale-95">
+            <p id="modalMessage" class="text-lg text-gray-700 mb-6">ข้อความ</p>
+            <button id="closeModalButton" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-8 rounded-full transition duration-300">
+                ตกลง
+            </button>
+        </div>
+    </div>
+
+
     <script>
+        const form = document.getElementById('hairQuizForm');
+        const modal = document.getElementById('notificationModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const closeModalButton = document.getElementById('closeModalButton');
+
+        // --- Function to show a modal message ---
+        const showModal = (message) => {
+            modalMessage.textContent = message;
+            modal.classList.remove('hidden');
+            // Animate in
+            setTimeout(() => {
+                modal.querySelector('.modal-overlay').classList.add('opacity-100');
+                modal.querySelector('.modal-container').classList.remove('scale-95');
+                modal.querySelector('.modal-container').classList.add('scale-100');
+            }, 10);
+        };
+
+        // --- Function to hide the modal ---
+        const hideModal = () => {
+             // Animate out
+            modal.querySelector('.modal-overlay').classList.remove('opacity-100');
+            modal.querySelector('.modal-container').classList.add('scale-95');
+            setTimeout(() => {
+                 modal.classList.add('hidden');
+            }, 300);
+        };
+
+        closeModalButton.addEventListener('click', hideModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                hideModal();
+            }
+        });
+
+
         // Listen for the form submission
-        document.getElementById('hairQuizForm').addEventListener('submit', function(event) {
+        form.addEventListener('submit', function(event) {
             // Prevent the form from submitting the traditional way
             event.preventDefault();
 
@@ -264,6 +317,13 @@
                 q4: getRadioValue('q4_confidence'),
                 q5: getRadioValue('q5_duration')
             };
+            
+            // --- Basic Validation ---
+            if (answers.q1 === "ไม่ได้เลือก" || answers.q4 === "ไม่ได้เลือก" || answers.q5 === "ไม่ได้เลือก") {
+                showModal("กรุณาตอบคำถามที่จำเป็น (ข้อ 1, 4, และ 5) ให้ครบถ้วน");
+                return;
+            }
+
 
             // --- Create the message for LINE ---
             const message = `
@@ -285,12 +345,8 @@
 - ${answers.q5}
 --------------------
 รบกวนแอดมินให้คำปรึกษาด้วยค่ะ
-            `.trim();
+            `.trim().replace(/^\s+/gm, '');
 
-            if (lineOA_ID === "@drtophair") {
-                alert("กรุณาตั้งค่า LINE OA ID ในไฟล์โค้ดก่อนใช้งาน");
-                return;
-            }
 
             // --- Create the LINE URL and redirect ---
             const lineUrl = `https://line.me/R/oaMessage/${lineOA_ID}/?${encodeURIComponent(message)}`;
@@ -301,5 +357,3 @@
     </script>
 </body>
 </html>
-
-
