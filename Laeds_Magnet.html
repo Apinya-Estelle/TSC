@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบประเมินสภาพเส้นผม</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Kanit) for Thai text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Kanit font to the whole page */
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+        /* Custom styling for better radio/checkbox appearance */
+        .form-radio, .form-checkbox {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            display: inline-block;
+            vertical-align: middle;
+            background-origin: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            flex-shrink: 0;
+            height: 1.25rem;
+            width: 1.25rem;
+            color: #4f46e5;
+            background-color: #fff;
+            border-color: #6b7280;
+            border-width: 1px;
+            border-radius: 0.25rem;
+        }
+        .form-radio {
+            border-radius: 50%;
+        }
+        .form-radio:checked, .form-checkbox:checked {
+            border-color: transparent;
+            background-color: currentColor;
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .form-radio:checked {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+        }
+        .form-checkbox:checked {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="container mx-auto p-4 md:p-8 max-w-2xl">
+        <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
+
+            <div class="text-center mb-8">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-800">ค้นหาสาเหตุผมบาง ผมร่วง ผมขาดง่าย</h1>
+                <p class="text-gray-600 mt-2">ตอบคำถามเพื่อค้นหาสาเหตุที่แท้จริงของคุณ</p>
+            </div>
+
+            <!-- The Form -->
+            <form id="hairQuizForm">
+
+                <!-- Question 1 -->
+                <div class="mb-8">
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">1. สภาพเส้นผมของคุณในปัจจุบัน ตรงกับข้อไหนมากที่สุด?</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q1_condition" value="ผมบางลงบริเวณกลางศีรษะ หรือรอยแสกผมเริ่มกว้างขึ้น" class="form-radio mr-3" required>
+                            <span>ผมบางลงบริเวณกลางศีรษะ หรือรอยแสกผมเริ่มกว้างขึ้น</span>
+                        </label>
+                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q1_condition" value="แนวไรผมด้านหน้าเถิกร่นสูงขึ้น (รูปตัว M)" class="form-radio mr-3">
+                            <span>แนวไรผมด้านหน้าเถิกร่นสูงขึ้น (รูปตัว M)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q1_condition" value="ผมร่วงเยอะผิดปกติทั่วทั้งศีรษะ" class="form-radio mr-3">
+                            <span>ผมร่วงเยอะผิดปกติทั่วทั้งศีรษะ (พบเส้นผมจำนวนมากบนหมอน, ตอนสระผม, หรือตอนหวีผม)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q1_condition" value="ผมร่วงเป็นหย่อมๆ (เห็นหนังศีรษะเป็นวง)" class="form-radio mr-3">
+                            <span>ผมร่วงเป็นหย่อมๆ (เห็นหนังศีรษะเป็นวง)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q1_condition" value="เส้นผมแห้งเสีย เปราะบาง ขาดง่ายกลางเส้น" class="form-radio mr-3">
+                            <span>เส้นผมแห้งเสีย เปราะบาง ขาดง่ายกลางเส้น (สังเกตเห็นผมหักสั้นๆ)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q1_condition" value="ผมบางลงโดยรวมทั่วศีรษะ และเห็นหนังศีรษะชัดเจนขึ้น" class="form-radio mr-3">
+                            <span>ผมบางลงโดยรวมทั่วศีรษะ และเห็นหนังศีรษะชัดเจนขึ้น</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="mb-8">
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">2. ในช่วง 1 ปีที่ผ่านมา คุณทำสิ่งเหล่านี้บ่อยเพียงใด?</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q2_actions" value="ดัดผม หรือ ยืดผม" class="form-checkbox mr-3">
+                            <span>ดัดผม หรือ ยืดผม (มากกว่า 2 ครั้งต่อปี)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q2_actions" value="กัดสีผม หรือ ทำสีผมเป็นประจำ" class="form-checkbox mr-3">
+                            <span>กัดสีผม หรือ ทำสีผมเป็นประจำ (ทุก 1-2 เดือน)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q2_actions" value="เป่าผมหรือรีดผมด้วยความร้อนสูง" class="form-checkbox mr-3">
+                            <span>เป่าผมหรือรีดผมด้วยความร้อนสูง (เกือบทุกวัน)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q2_actions" value="ไม่ได้ทำอะไรตามข้างต้นเป็นพิเศษ" class="form-checkbox mr-3">
+                            <span>ไม่ได้ทำอะไรตามข้างต้นเป็นพิเศษ</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="mb-8">
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">3. ปัจจุบัน คุณดูแลปัญหาเส้นผมของคุณอย่างไรบ้าง?</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q3_solutions" value="ใช้แชมพู/ครีมนวด สูตรลดผมร่วง หรือสูตรออร์แกนิก" class="form-checkbox mr-3">
+                            <span>ใช้แชมพู/ครีมนวด สูตรลดผมร่วง หรือสูตรออร์แกนิก</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q3_solutions" value="ใช้เซรั่ม / โทนิค บำรุงหนังศีรษะ" class="form-checkbox mr-3">
+                            <span>ใช้เซรั่ม / โทนิค บำรุงหนังศีรษะ</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q3_solutions" value="ทานวิตามิน / อาหารเสริม" class="form-checkbox mr-3">
+                            <span>ทานวิตามิน / อาหารเสริม (เช่น ไบโอติน, ซิงค์)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q3_solutions" value="พบแพทย์ผิวหนัง / คลินิกเส้นผม" class="form-checkbox mr-3">
+                            <span>พบแพทย์ผิวหนัง / คลินิกเส้นผม</span>
+                        </label>
+                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q3_solutions" value="ปรับการกิน / การนอน / ลดความเครียด" class="form-checkbox mr-3">
+                            <span>ปรับการกิน / การนอน / ลดความเครียด</span>
+                        </label>
+                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q3_solutions" value="ไม่ได้ทำอะไร" class="form-checkbox mr-3">
+                            <span>ไม่ได้ทำอะไร</span>
+                        </label>
+                         <div class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" id="q3_other" name="q3_solutions" value="อื่นๆ" class="form-checkbox mr-3">
+                            <label for="q3_other" class="mr-2">อื่นๆ (โปรดระบุ):</label>
+                            <input type="text" id="q3_other_text" class="w-full border-b focus:outline-none focus:border-indigo-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="mb-8">
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">4. ปัญหาเส้นผมส่งผลกระทบต่อ "ความมั่นใจ" ของคุณมากน้อยเพียงใด?</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q4_confidence" value="มากที่สุด (กังวลตลอดเวลา)" class="form-radio mr-3" required>
+                            <span>มากที่สุด (กังวลตลอดเวลา)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q4_confidence" value="มาก (ส่งผลต่อการเข้าสังคม)" class="form-radio mr-3">
+                            <span>มาก (ส่งผลต่อการเข้าสังคม)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q4_confidence" value="ปานกลาง (กังวลเป็นครั้งคราว)" class="form-radio mr-3">
+                            <span>ปานกลาง (กังวลเป็นครั้งคราว)</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q4_confidence" value="เล็กน้อย" class="form-radio mr-3">
+                            <span>เล็กน้อย</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q4_confidence" value="ไม่ส่งผลเลย" class="form-radio mr-3">
+                            <span>ไม่ส่งผลเลย</span>
+                        </label>
+                    </div>
+                </div>
+
+                 <!-- Question 5 -->
+                <div class="mb-10">
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">5. คุณเริ่มกังวลเกี่ยวกับปัญหาเส้นผมมานานแค่ไหนแล้ว?</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q5_duration" value="น้อยกว่า 6 เดือน" class="form-radio mr-3" required>
+                            <span>น้อยกว่า 6 เดือน</span>
+                        </label>
+                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q5_duration" value="6 เดือน - 1 ปี" class="form-radio mr-3">
+                            <span>6 เดือน - 1 ปี</span>
+                        </label>
+                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q5_duration" value="1 - 3 ปี" class="form-radio mr-3">
+                            <span>1 - 3 ปี</span>
+                        </label>
+                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="q5_duration" value="มากกว่า 3 ปี" class="form-radio mr-3">
+                            <span>มากกว่า 3 ปี</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                     <p class="text-gray-600 mb-4">"เผยสาเหตุที่แท้จริงของอาการผมบาง ผมร่วง ผมขาด ของคุณ"</p>
+                    <button type="submit" class="w-full md:w-auto bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-12 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                        ส่งผลประเมินเพื่อรับคำปรึกษา
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Listen for the form submission
+        document.getElementById('hairQuizForm').addEventListener('submit', function(event) {
+            // Prevent the form from submitting the traditional way
+            event.preventDefault();
+
+            // ===================================================================
+            //  สำคัญ! : แก้ไข ID ของ LINE Official Account ของคุณตรงนี้
+            //  ใส่ ID ที่ขึ้นต้นด้วย @ เช่น @123abcd
+            // ===================================================================
+            const lineOA_ID = "@YOUR_LINE_OA_ID"; 
+            // ===================================================================
+
+            // --- Function to get answers ---
+            const getRadioValue = (name) => {
+                const radio = document.querySelector(`input[name="${name}"]:checked`);
+                return radio ? radio.value : "ไม่ได้เลือก";
+            };
+
+            const getCheckboxValues = (name) => {
+                const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+                if (checkboxes.length === 0) return ["ไม่ได้เลือก"];
+                let values = [];
+                checkboxes.forEach((checkbox) => {
+                    let value = checkbox.value;
+                    if (value === "อื่นๆ") {
+                        const otherText = document.getElementById('q3_other_text').value.trim();
+                        if (otherText) {
+                            value = `อื่นๆ: ${otherText}`;
+                        } else {
+                            value = 'อื่นๆ (ไม่ได้ระบุ)';
+                        }
+                    }
+                    values.push(value);
+                });
+                return values;
+            };
+
+            // --- Collect all answers ---
+            const answers = {
+                q1: getRadioValue('q1_condition'),
+                q2: getCheckboxValues('q2_actions').join(', '),
+                q3: getCheckboxValues('q3_solutions').join(', '),
+                q4: getRadioValue('q4_confidence'),
+                q5: getRadioValue('q5_duration')
+            };
+
+            // --- Create the message for LINE ---
+            const message = `
+ผลการประเมินสภาพเส้นผม:
+--------------------
+1. สภาพเส้นผมปัจจุบัน:
+- ${answers.q1}
+
+2. การกระทำในช่วง 1 ปีที่ผ่านมา:
+- ${answers.q2}
+
+3. วิธีดูแลที่ใช้อยู่:
+- ${answers.q3}
+
+4. ผลกระทบต่อความมั่นใจ:
+- ${answers.q4}
+
+5. ระยะเวลาที่กังวล:
+- ${answers.q5}
+--------------------
+รบกวนแอดมินให้คำปรึกษาด้วยค่ะ
+            `.trim();
+
+            if (lineOA_ID === "@YOUR_LINE_OA_ID") {
+                alert("กรุณาตั้งค่า LINE OA ID ในไฟล์โค้ดก่อนใช้งาน");
+                return;
+            }
+
+            // --- Create the LINE URL and redirect ---
+            const lineUrl = `https://line.me/R/oaMessage/${lineOA_ID}/?${encodeURIComponent(message)}`;
+            
+            // Open the LINE app with the pre-filled message
+            window.location.href = lineUrl;
+        });
+    </script>
+</body>
+</html>
